@@ -1,24 +1,37 @@
-name: Build
+name: Build and Test
 
 on:
   push:
-    branches: [integration, main]
+    branches: [ main ]
   pull_request:
-    branches: [integration, main]
+    branches: [ main ]
+
+env:
+  NODE_ENV: production
+  API_KEY: ${{ secrets.API_KEY }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [14.x]
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Create archive
-      run: tar -czvf code.tar.gz .
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
       with:
-        name: code
-        path: code.tar.gz
+        node-version: ${{ matrix.node-version }}
+    - name: Install Dependencies
+      run: npm install
+    - name: Build
+      run: npm run build
+    - name: Test
+      run: npm test
+    - name: Deploy
+      env:
+        ENVIRONMENT: production
+        API_KEY: ${{ secrets.API_KEY }}
+      run: npm run deploy
