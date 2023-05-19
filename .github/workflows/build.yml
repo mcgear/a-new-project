@@ -2,36 +2,24 @@ name: Build and Test
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - integration
   pull_request:
-    branches: [ main ]
-
-env:
-  NODE_ENV: production
-  API_KEY: ${{ secrets.API_KEY }}
+    branches:
+      - integration
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
+
     - name: Install Dependencies
       run: npm install
+
     - name: Build
       run: npm run build
+
     - name: Test
-      run: npm test
-    - name: Deploy
-      env:
-        ENVIRONMENT: production
-        API_KEY: ${{ secrets.API_KEY }}
-      run: npm run deploy
+      run: npm run test
