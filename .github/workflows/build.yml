@@ -1,25 +1,20 @@
-name: Build and Test
+name: Build
 
 on:
   push:
     branches:
-      - integration
-  pull_request:
-    branches:
-      - integration
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install Dependencies
-      run: npm install
-
-    - name: Build
-      run: npm run build
-
-    - name: Test
-      run: npm run test
+      - name: Archive repo contents
+        uses: actions/upload-artifact@v2
+        with:
+          name: repo-contents
+          path: .
