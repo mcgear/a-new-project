@@ -17,10 +17,10 @@
     "@types/react-dom": "^17.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-scripts --template typescript start",
+    "build": "react-scripts --template typescript build",
+    "test": "react-scripts --template typescript test",
+    "eject": "react-scripts --template typescript eject"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +39,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "tailwindcss": {
+    "config": {
+      "purge": [],
+      "darkMode": false,
+      "theme": {
+        "extend": {}
+      },
+      "variants": {},
+      "plugins": []
+    }
   }
 }
