@@ -1,6 +1,6 @@
-# A New Project
+# Project Name
 
-Welcome to our new project! This project is built with [Node.js](https://nodejs.org/) and [Express](https://expressjs.com/).
+This is a project built with [Node.js](https://nodejs.org/) and [Express](https://expressjs.com/).
 
 ## Getting Started
 
@@ -13,7 +13,7 @@ To get started with this project, follow these steps:
 
 ## Contributing
 
-We welcome contributions to this project. To contribute, please follow these steps:
+Contributions to this project are welcome. To contribute, please follow these steps:
 
 1. Fork the repository to your own GitHub account.
 2. Create a new branch for your changes.

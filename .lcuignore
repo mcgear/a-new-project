@@ -3,5 +3,6 @@
 
 .git/
 package-lock.json
+build/
 
 .(png|svg|jpeg|jpg|gif|tiff|psd|pdf|mov|mp4|avi|wmv)
